@@ -1,0 +1,10 @@
+<div>
+  <div class="tool-strip-vertical">
+    <div (click)="toolBtnClickH(itm);" class="dp-vertical-button-cont {{itm.active ? 'active': 'inactive'}}" *ngFor="let itm of tools">
+      <button class="button-clear" >
+        <ion-icon name="{{itm.icon}}"></ion-icon>
+      </button>
+      <div>{{itm.label}}</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<ion-header>
+<ion-navbar transparent>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title class="text-center">{{appTitle}}</ion-title>
+</ion-navbar>
+</ion-header>
+
+<ion-content padding class="dp-page create-page">
+  <section class="app-container" [ngClass]="{fullScreen:isFullScreen}">
+
+    <!-- begin app-header container -->
+    <ion-row class="row header box-shadow" *ngIf="showHeader">
+      <ion-col class="col text-center">
+        <app-header>Test</app-header>
+      </ion-col>
+    </ion-row>
+    <!-- end app-header container -->
+
+    <!-- begin app-middle container -->
+    <ion-row class="row middle">
+      <ion-col *ngIf="showLeftsidebar" class="col text-center leftsidebar">
+        <app-leftsidebar (modeChangeEvt)="onModeChange($event)"></app-leftsidebar>
+      </ion-col>
+      <ion-col *ngIf="showLeftsidebar" class="col text-center leftsideaux">
+        <app-leftsideaux (thumbnailClickEvt)="onThumbnailClick($event)"></app-leftsideaux>
+      </ion-col>
+      <ion-col class="col text-center middlemaincontent">
+        <app-middle></app-middle>
+      </ion-col>
+    </ion-row>
+    <!-- begin app-middle container -->
+
+    <!-- begin app-footer container -->
+    <ion-row class="row footer" *ngIf="showFooter">
+      <ion-col class="col text-center">
+        <button class="button button-positive">Icon</button> Title
+      </ion-col>
+      <ion-col class="col text-center">
+        <button class="button button-positive">Icon</button>
+        <app-footer></app-footer>
+      </ion-col>
+    </ion-row>
+    <!-- begin app-footer container -->
+  </section>
+
+</ion-content>

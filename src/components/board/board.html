@@ -1,0 +1,44 @@
+<div #myFabricCanvasRef class="board" [ngClass]="{'dp-dragover-active':clsDragOverActive}" (dragover)="false" (dragend)="false" (drop)="handleDrop($event)"
+    (dragenter)="dragenter()" (dragover)="dragover()" (dragleave)="dragleave()">
+
+    <!-- board title -->
+    <div class="board-title board-title-top text-center" (click)="boardTitleClickH();">{{properties.title}} &nbsp;<span class="small-text">( Click to edit title)</span></div>
+
+    <!-- actual board -->
+    <canvas [id]="domBoardID" class="board-canvas"></canvas>
+    <h7 *ngIf="!showBoardTimer" class="dp-hint dp-tiny-text text-center">Hint: Cilck and drag items on board to reposition. Drag edges to resize and rotate</h7>
+    <div class="board-title board-title-bottom text-center" (click)="boardTitleClickH();">{{properties.title}}</div>
+    
+    <!-- board timer -->
+    <div *ngIf="showBoardTimer" class="board-timer">
+        {{boardTimerStr}}
+    </div>
+    <!-- begin canvas action buttons -->
+    <p *ngIf="boardTB.show" class="dp-canvas-toolbar" [style.left.px]="boardTB.left" [style.top.px]="boardTB.top">
+        <!-- delete image button -->
+        <button (click)="deleteCanvasItemH();" dark round>
+        <ion-icon name='trash' is-active="false"></ion-icon>
+        Delete
+        </button>
+
+        <!-- add text and group with image button -->
+        <span>
+        <button  *ngIf="hideTBTextarea" (click)="tbEditTextBtnH();" dark round>
+        <ion-icon name='md-create' is-active="false"></ion-icon>
+        Edit Text
+        </button>
+
+         <button  *ngIf="!hideTBTextarea" (click)="saveTextToolBtnH();" positive round>
+        <ion-icon name='md-checkbox-outline' is-active="false"></ion-icon>
+        Save Text
+        </button>
+        <div>
+            <textarea *ngIf="!hideTBTextarea" type="text" placeholder="Enter text here" (change)="tileTextChangeH()" [(ngModel)]="tileText"></textarea>
+        </div>
+        
+        </span>
+        
+    </p>
+    <!-- end canvas action buttons -->
+
+</div>

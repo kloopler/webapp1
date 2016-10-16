@@ -1,0 +1,90 @@
+<div class="dp-wrapper">
+  <ion-searchbar *ngIf="showSearch" [(ngModel)]="searchQuery" (input)="getItems($event)"></ion-searchbar>
+
+  <!-- begin how to section -->
+  <div *ngIf="showHowTo">
+    <!--<h3 class="text-center">How to</h3>-->
+    <div class="help-text">
+      <h5 class="text-center">1 - Add Photos</h5>
+      <!--<p class="dp-text-medium">To add photos:</p>-->
+      <p class="dp-text-help small-text">Click the <span class="help-ref">"Step 1 - Add Photos"</span> button in the left-handside toolbar</p>
+      <p class="dp-text-help small-text">Click on one of the photos revealed in the middle pane to place on the board</p>
+      <p class="dp-text-help small-text">Click and drag the photo on the board to an appropriate location within the board</p>
+
+      <br>
+      <h5 class="text-center">2 - Save Board</h5>
+      <!--<p class="dp-text-help small-text">To add photos:</p>-->
+      <p class="dp-text-help small-text">Click the <span class="help-ref">"Step 2 - Save"</span> button in the left-handside toolbar.</p>
+      <p class="dp-text-help small-text"> A dialog will pop up allowing you to enter or edit the title and description of your board. Click "Save" to save your edits.
+      </p>
+
+      <br>
+      <h5 class="text-center">3 - Preview Board</h5>
+      <p class="dp-text-help small-text">Click the <span class="help-ref">"Step 3 - Preview"</span> button in the left-handside toolbar.</p>
+      <p class="dp-text-help small-text"> Playback of the current items on the board will begin
+      </p>
+    </div>
+  </div>
+  <!-- end add how to section -->
+
+
+  <!-- begin add photos section -->
+
+  <div *ngIf="showPhotosTools" class="dp-wrapper-inner">
+    <!--<h3 class="text-center dp-sidebaraux-title">Add Photos</h3>-->
+
+    <div class="widgets-cont">
+      <!-- <h6>Cilck or Drag and Drop On Board</h6>-->
+      <!--<div>
+        <FileUpload>Test</FileUpload>
+      </div>-->
+      <div class="dp-text-cont">
+        <h4 class="text-center">Gallery</h4>
+        <h7 class="dp-tiny-text">Scroll & cilck thumbnails to place on board</h7>
+      </div>
+      <div class="dp-scroll-cont">
+        <ion-scroll scrollY="true" class='thumbnails-wrapper'>
+          <!--<div class='container' [dragula]='"another-bag"' [dragulaModel]='many'>-->
+          <div class='xcontainer'>
+            <div class="dp-vertical-photos-cont {{itm.active ? 'active': 'inactive'}}" *ngFor="let itm of thumbs">
+              <img (click)="thumbnailClickEvtH(itm)" class="dp-photo" src={{itm.url}} />
+            </div>
+          </div>
+        </ion-scroll>
+      </div>
+
+      <h1>OR</h1>
+      <div><button id="openFile" (click)="loadImages();">Upload Images</button></div>
+      <h7 class="dp-hint dp-tiny-text text-center">Hint: You can drag images from your computer onto the board to add to gallery</h7>
+    </div>
+
+  </div>
+  <!-- end add photos section -->
+
+
+  <!-- begin add text section -->
+  <div *ngIf="showTextTools">
+    <h3 class="text-center">Add Text</h3>
+    <div class="widgets-cont">
+      <h7 class="dp-tiny-text">All Text is Optional</h7>
+      <div class='wrapper'>
+        <div class='container'>
+          <ion-list>
+
+            <ion-item>
+              <ion-label stacked>Enter Board Title</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label stacked>Image 1 Caption</ion-label>
+              <ion-input type="password"></ion-input>
+            </ion-item>
+
+          </ion-list>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end add photos section -->
+</div>

@@ -1,0 +1,77 @@
+//TODO replace with version in app.dplayout.scss
+page-homepage {
+
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    height: 100%;
+    //margin-top:50px;
+    //padding: 50px 0px 0px 0;
+    dp-wrapper{
+        height:100%;
+        padding-top:50px;
+    }
+    ion-row{
+        height:100%;
+    }
+
+    .dp-narrowCol400{
+        max-width:400px;
+        margin:auto;
+    }
+    .branding-cont{
+        //border-right:1px solid #000;
+        .dp-logo-small{
+            width:200px;
+        }
+
+    }
+    #addFirst-cont{
+        position: relative;
+        padding:20px;
+        padding-top:60px;
+        color:#387ef5;
+        text-decoration: none;
+    }
+    
+
+    .flex-container {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .flex-row {
+        width: auto;
+        //border: 1px solid blue;
+    }
+    .flex-item {
+        padding: 5px;
+        text-align: center;
+    }
+
+}
+
+.dp-quote{
+    font-size: 22px;
+    text-align: center;
+    display: inline-block;
+
+    .dp-quote-attrib:before{
+        content:'-';
+    }
+
+    .dp-quote-attrib{
+        font-size: 12px;
+        text-align: center;
+        display: inline;
+    }
+}

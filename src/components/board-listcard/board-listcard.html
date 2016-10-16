@@ -1,0 +1,38 @@
+<ion-card *ngIf="board" class="dp-boardcard">
+  <div class="dp-relative-cont" *ngIf="board && board.objects && board.objects.length > 0 && board.objects[0].objects">
+    <img [src]="board.objects[0].objects[0].src">
+    <!--<button (click)="alert('test')" fab fab-right fab-top class="fab-board-list">
+      <ion-icon name='play'></ion-icon>
+    </button>-->
+  </div>
+  <ion-card-header positive>
+    <strong>Title : &nbsp;</strong>{{properties.title}}
+  </ion-card-header>
+  <ion-item>
+    <!--<ion-icon name="wine" item-left large></ion-icon>-->
+    <strong>Descripion:</strong>
+    <h2>Why I Created It</h2>
+    <p>{{properties.description}}</p>
+  </ion-item>
+
+  <!--<ion-row no-padding>
+    <ion-col>
+      <button clear small danger>
+          <ion-icon name='star'></ion-icon>
+          Favorite
+        </button>
+    </ion-col>
+    <ion-col text-center>
+      <button clear small danger>
+          <ion-icon name='musical-notes'></ion-icon>
+          Listen
+        </button>
+    </ion-col>
+    <ion-col text-right>
+      <button clear small danger>
+          <ion-icon name='share-alt'></ion-icon>
+          Share
+        </button>
+    </ion-col>
+  </ion-row>-->
+</ion-card>

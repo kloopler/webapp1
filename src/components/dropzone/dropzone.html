@@ -1,0 +1,42 @@
+<!-- credit: https://auth0.com/blog/2015/12/15/create-a-desktop-app-with-angular-2-and-electron/ -->
+<div [ngClass]="{'dp-drop-target': true, 'dp-drop-target-active':isDragOver }" 
+ (dragover)="false" (dragend)="false" (drop)="handleDrop($event)">
+  <p>
+    <strong>Drop Your Images Here</strong>
+  </p>
+</div>
+
+<div class="media" *ngFor="let image of images">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="{{image.path}}" style="max-width:200px">
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">{{image.name}}</h4>
+    <p>{{image.size }}</p>
+  </div>
+</div>
+
+<!--<h1>Total Images: {{ imageStats().count }}</h1>
+    <h1>Total Size: {{ imageStats().size }}</h1>
+    <div
+      (dragover)="false"
+      (dragend)="false"
+      (drop)="handleDrop($event)"
+      style="height: 300px; border: 5px dotted #ccc;">
+      <p style="margin: 10px; text-align: center">
+        <strong>Drop Your Images Here</strong>
+      </p>
+    </div>
+    <div class="media" *ngFor="#image of images">
+      <div class="media-left">
+        <a href="#">
+          <img class="media-object" src="{{image.path}}" style="max-width:200px">
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{image.name}}</h4>
+        <p>{{image.size }}</p>
+      </div>
+    </div>-->

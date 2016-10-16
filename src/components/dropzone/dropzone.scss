@@ -1,0 +1,24 @@
+dropzone{
+  display: block;
+  background:transparent;
+  /*min-height: 500px;
+  min-width:700px;
+  height: 300px; 
+  width: 300px;*/
+  width:100%;
+  height: 100%;
+  border: 5px dotted #ccc;
+  z-index:-100;
+
+  p{
+     margin: 10px; 
+     text-align: center;
+  }
+}
+
+.dp-drop-target-active{
+  background:#f00;
+}
+.dp-drop-target{
+  background:#ff0;
+}

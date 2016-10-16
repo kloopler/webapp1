@@ -1,0 +1,138 @@
+<ion-header>
+	<ion-navbar transparent>
+		<button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+		<ion-title class="text-center">{{appTitle}}</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="dp-page page-homepage">
+	<!--{{boardCount}} | {{userBoardCount}} | {{sampleBoardCount}}
+  <div>userBoards {{userBoards}}</div>
+  <br>
+  <div>sampleBoards {{sampleBoards}}</div>-->
+	<ion-row class="dp-wrapper">
+		<!-- begin branding -->
+		<ion-col width-50 class>
+			<div class="flex-container branding-cont">
+				<div class="flex-row">
+					<div class="flex-item">
+						<img class="dp-logo-small" alt="Big Visionboard Logo" [src]="logoSrc">
+						<div>v1.0.6</div>
+						<div class="mb-wrap mb-style-3">
+							<blockquote>
+								<p>{{quote.text}}</p>
+							</blockquote>
+							<div class="mb-attribution">
+								<p class="mb-author">{{quote.author}}</p>
+								<!--<cite><a href="http://www.gutenberg.org/ebooks/1260">Jane Eyre</a></cite>-->
+								<!--<div class="mb-thumb"></div>-->
+							</div>
+						</div>
+
+					</div>
+					<br>
+					<div class="flex-item dp-appSubTitle">{{loadingText}}</div>
+					<!-- begin add first board -->
+					<div class="xxflex-container ">
+						<div class="flex-row">
+							<div class="flex-item" id="addFirst-cont" (click)="createFirstBoard()">
+								<button fab fab-top fab-center> <ion-icon name="md-add"></ion-icon></button>
+								<h2 class="text-center">New Visionboard</h2>
+							</div>
+						</div>
+					</div>
+					<!-- end add first board -->
+				</div>
+			</div>
+		</ion-col>
+		<!-- end branding -->
+
+		<ion-col class="dp-paddedCol">
+			<div class="dp-narrowCol400">
+
+
+				<!-- begin latest board -->
+				<div *ngIf="userBoardCount != 0">
+					<h2 class="text-center">Featured Board</h2>
+					<board-listcard (click)="itemTapped($event, userBoards[0])" [board]="userBoards[0].payLoad" [properties]="userBoards[0].properties">Test</board-listcard>
+				</div>
+				<!-- end latest board -->
+
+				<br>
+				<!-- begin list of user boards -->
+				<ion-card *ngIf="userBoardCount > 1">
+					<ion-item no-lines ion-item>
+						<div *ngIf="userBoardCount > 0">
+							<h1 class="text-center">My Boards</h1>
+						</div>
+						<span *ngIf="userBoardCount > 1">
+          You have created {{userBoardCount}} boards so far
+          </span>
+						<span *ngIf="userBoardCount == 1">
+          You have created {{userBoardCount}} board so far
+          </span>
+					</ion-item>
+					<ion-item *ngIf="userBoardCount == 0" no-lines ion-item>
+						<a class="dp-text-shadow-deep" (click)="createFirstBoard()" href="#">Click here to create your first board</a>
+					</ion-item>
+					<ion-item *ngIf="userBoardCount != 0" no-lines ion-item>
+						<ion-list>
+							<ion-item no-lines ion-item *ngFor="let item of userBoards">
+								<ion-avatar item-left (click)="itemTapped($event, item)">
+									<div *ngIf="item && item.payLoad && item.payLoad.objects && item.payLoad.objects.length > 0" class="dp-cont" [ngStyle]="{ 'background-image': 'url(' + item.payLoad.objects[0].objects[0].src + ')'}"></div>
+								</ion-avatar>
+								<h2 (click)="itemTapped($event, item)">{{item.properties.title}}</h2>
+								<h3 (click)="itemTapped($event, item)">{{item.properties.descrition}}</h3>
+								<p (click)="itemTapped($event, item)"><span class="dp-list-item-label">Created: &nbsp;</span>{{item.properties.dateTimeCreated | date:"MM/dd/yy hh:mm"}}</p>
+								<button clear item-right (click)="viewItem(item)">View</button>
+							</ion-item>
+						</ion-list>
+					</ion-item>
+				</ion-card>
+				<!-- end list of user boards -->
+
+				<br>
+				<!-- begin list of sample boards -->
+				<ion-card *ngIf="sampleBoardCount > 0">
+					<ion-item no-lines ion-item>
+						<div *ngIf="sampleBoardCount > 0">
+							<h1 class="text-center">Sample Boards</h1>
+						</div>
+						<span *ngIf="sampleBoardCount > 1">
+          You have {{sampleBoardCount}} sample boards to use for creating yours. <br>
+          Simply click and select Edit in the popup menu
+          </span>
+						<span *ngIf="sampleBoardCount == 1">
+          You have {{sampleBoardCount}} sample board
+          </span>
+					</ion-item>
+					<ion-item *ngIf="sampleBoardCount != 0" no-lines ion-item>
+						<ion-list>
+							<ion-item no-lines ion-item *ngFor="let item of sampleBoards">
+								<ion-avatar item-left (click)="itemTapped($event, item)">
+									<div *ngIf="item && item.payLoad && item.payLoad.objects && item.payLoad.objects.length > 0 && item.payLoad.objects[0].objects"
+										class="dp-cont" [ngStyle]="{ 'background-image': 'url(' + item.payLoad.objects[0].objects[0].src + ')'}"></div>
+								</ion-avatar>
+								<h2 (click)="itemTapped($event, item)">{{item.properties.title}}</h2>
+								<h3 (click)="itemTapped($event, item)">{{item.properties.descrition}}</h3>
+								<p (click)="itemTapped($event, item)">
+									<span class="dp-list-item-label">Last Used: &nbsp;</span>{{item.properties.dateTimeUsed | date:"MM/dd/yy hh:mm"}}
+									&nbsp;&nbsp;&nbsp;
+									<span>Created: &nbsp;</span>{{item.properties.dateTimeCreated | date:"MM/dd/yy hh:mm"}}
+								</p>
+								<button clear item-right (click)="viewItem(item)">View</button>
+							</ion-item>
+						</ion-list>
+					</ion-item>
+				</ion-card>
+				<!-- end list of sample boards -->
+			</div>
+		</ion-col>
+	</ion-row>
+</ion-content>
+
+<!--<div *ngIf="selectedItem" padding>
+    You navigated here from <b>{{selectedItem.title}}</b>
+  </div>-->

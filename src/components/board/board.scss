@@ -1,0 +1,71 @@
+.board.dp-dragover-active{
+    //border:2px solid #f00;
+    border: 15px dotted #444;
+    z-index: 10000; //raised up so dragleave not triggered by inner canvases
+  }
+
+.board {
+  /*position:absolute;
+  top:20px;
+  left:20px;
+  right:20px;
+  bottom:20px;
+  //border:1px solid #000;*/
+  
+  //height:80%;
+  height:calc(100% - 40px);
+  width:100%;
+  font-size: 24px;
+  margin: auto;
+  //padding-top:10px;
+  //background:#ff0;
+  
+  textarea{
+    background:lightyellow;
+    border:1px solid #ccc;
+    text-align: center;
+    border-radius: 10px;
+    padding-top:10px;
+  }
+
+  .board-title{
+    text-align: center;
+  }
+  
+  .tile {
+    .tile-bottom-bar {
+      padding: 20px;
+      //background: $tilebottombarbg;
+      //color: $tilebottombarcolor;
+    }
+    .tile-bottom-bar-left {
+      font-size: 18px;
+    }
+    .tile-bottom-right {
+      font-size: 18px;
+    }
+  }
+  
+  .canvas-container{
+    margin: auto;
+    background:#fff;
+  }
+
+  .dp-canvas-toolbar{
+    position: absolute;
+    top:0px;
+    left:0px;
+  }
+}
+.board-timer{
+  font-size: 50px;
+  color:rgba(0,0,0,0.2);
+  font-weight: 200;
+}
+/* in create page has background and shadow in visualize page has none */
+.board-canvas{
+  margin:auto;
+  //background:#fff; - CAUTION!! will completely cover up the board
+  //box-shadow: 10px 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}

@@ -1,0 +1,4 @@
+<!--<dropzone class="dp-drop-target"></dropzone>-->
+<button fab fab-top fab-right (click)="homeBtnClickH();"> <ion-icon name="home"></ion-icon></button>
+<button *ngIf="inPreviewMode" fab fab-top fab-center (click)="abortAnimBtnClickH();"> <ion-icon name="md-close-circle"></ion-icon></button>
+<board [showBoardTimer]="showBoardTimer" [boardWidth]="boardWidth" [boardHeight]="boardHeight" [domBoardID]='domBoardID' ></board>

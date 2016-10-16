@@ -1,0 +1,27 @@
+<ion-header>
+<ion-navbar transparent >
+  <ion-title></ion-title>
+</ion-navbar>
+</ion-header>
+<ion-content padding class="splash">
+  <!--<div class="row">
+    <div class="col col-10 col-top"></div>
+    <div class="col col-center">
+      <div class="dp-appTitle">Big Vision Board</div>
+      <div class="dp-appSubTitle">Believe and Achieve</div>
+    </div>
+    <div class="col col-10 col-bottom"></div>
+  </div>-->
+
+  <div class="flex-container">
+    <div class="flex-row">
+      <div class="flex-item">
+        <img class="splashImg" alt="Big Visionboard Logo" [src]="splashImgSrc">
+        <!--<div class="dp-appTitle">Big Vision Board</div>
+        <div class="dp-appSubTitle">Believe and Achieve</div>-->
+      </div> 
+      <br>
+      <div class="flex-item dp-appSubTitle">{{loadingText}}</div>
+    </div>
+  </div>
+</ion-content>

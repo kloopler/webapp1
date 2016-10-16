@@ -1,0 +1,57 @@
+<ion-header>
+	<ion-navbar transparent>
+		<ion-title></ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding class="dp-content">
+
+	<div class="auth-main">
+		<div class="auth-block dp-form-wrap">
+			<h1 class="app-title">{{config.appTitle}}</h1>
+			<a routerLink="/register" (click)="goToSignup()" class="auth-link">{{config.loginSignup}}</a>
+			<div class="auth-sep"><span><span>{{config.socSigninTitle}}</span></span>
+			</div>
+			<div class="al-share-auth">
+				<ul class="al-share clearfix">
+					<li (click)="loginFacebook()">
+						<ion-icon name="logo-facebook"></ion-icon>
+					</li>
+					<li (click)="loginTwitter()">
+						<ion-icon name="logo-twitter"></ion-icon>
+					</li>
+					<li (click)="loginGoogle()">
+						<ion-icon name="logo-google"></ion-icon>
+					</li>
+				</ul>
+			</div>
+			<div class="auth-sep"><span><span>or Sign in with email</span></span>
+			</div>
+			<form [formGroup]="loginForm" (submit)="loginUser()" novalidate class="form-horizontal">
+				<!-- email -->
+				<ion-item>
+					<ion-label stacked>{{config.loginfrmEmailLbl}}</ion-label>
+					<ion-input #email formControlName="email" type="email" (change)="elementChanged(email)" placeholder="Your email address"
+						[class.invalid]="!loginForm.controls.email.valid && (emailChanged || submitAttempt)"></ion-input>
+				</ion-item>
+				<ion-item class="error-message" *ngIf="!loginForm.controls.email.valid  && (emailChanged || submitAttempt)">
+					<p>{{config.loginfrmEmailErr}}</p>
+				</ion-item>
+				<!-- password -->
+				<ion-item>
+					<ion-label stacked>{{config.loginfrmPwdLbl}}</ion-label>
+					<ion-input #password formControlName="password" type="password" (change)="elementChanged(password)" placeholder="Your password"
+						[class.invalid]="!loginForm.controls.password.valid && (passwordChanged || submitAttempt)"></ion-input>
+				</ion-item>
+				<ion-item class="error-message" *ngIf="!loginForm.controls.password.valid  && (passwordChanged || submitAttempt)">
+					<p>{{config.loginfrmPwdErr}}</p>
+				</ion-item>
+				<!-- buttons -->
+				<p class="dp-buttonbar">
+					<button ion-button icon-left [disabled]="!loginForm.valid" type="submit"><ion-icon name="unlock"></ion-icon>{{config.loginBtn}}</button>
+					<button ion-button outline icon-left (click)="goToResetPassword()"><ion-icon name="unlock"></ion-icon>{{config.loginBtnForgot}} </button>
+				</p>
+			</form>
+		</div>
+	</div>
+</ion-content>

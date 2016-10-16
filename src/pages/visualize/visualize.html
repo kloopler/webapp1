@@ -1,0 +1,14 @@
+<!--<ion-header>
+<ion-navbar transparent [hidden]="true" >
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title class="text-center">{{appTitle}}</ion-title>
+</ion-navbar>
+</ion-header>-->
+
+<ion-content class="dp-page visualize text-center">
+  <button fab fab-top fab-right (click)="homeBtnClickH();"> <ion-icon name="home"></ion-icon></button>
+  <!--<button *ngIf="showReplayBtn" fab fab-top fab-center fab-fixed (click)="replayBtnClickH();"> <ion-icon name="md-sync"></ion-icon></button>-->
+  <board [showBoardTimer]="showBoardTimer" [boardWidth]="boardWidth" [boardHeight]="boardHeight" [domBoardID]='domBoardID'></board>
+</ion-content>
